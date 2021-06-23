@@ -1,21 +1,23 @@
-import random
-import numpy as np
-import pickle
 import json
+import pickle
+import random
 import nltk
+import numpy as np
+from flask import Flask, render_template, request
 from keras.models import load_model
-from flask import Flask, jsonify , redirect, url_for, render_template, request
 from nltk.stem import WordNetLemmatizer
+
 lemmatizer = WordNetLemmatizer()
 
 # chat initialization
-model = load_model("/content/sample_data/chatbot_model.h5")
-intents = json.loads(open("/content/sample_data/intents.json").read())
-words = pickle.load(open("/content/sample_data/words.pkl", "rb"))
-classes = pickle.load(open("/content/sample_data/classes.pkl", "rb"))
+model = load_model("chatbot_model.h5")
+intents = json.loads(open("intents.json").read())
+words = pickle.load(open("words.pkl", "rb"))
+classes = pickle.load(open("classes.pkl", "rb"))
 
 
 app = Flask(__name__)
+
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -25,13 +27,10 @@ def home():
     else:
         return render_template("index.html")
 
+
 @app.route("/get", methods=["POST"])
 def chatbot_response():
     msg = request.form["msg"]
-    return chatbot_response(msg)
-
-
-def chatbot_response(msg):
     # checks is a user has given a name, in order to give a personalized feedback
     if msg.startswith('my name is'):
         name = msg[11:]
