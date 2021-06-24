@@ -1,9 +1,10 @@
-import json
-import pickle
+# libraries
 import random
-import nltk
 import numpy as np
-from flask import Flask, render_template, request
+import pickle
+import json
+from flask import Flask, jsonify, request
+import nltk
 from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
 
@@ -15,37 +16,25 @@ intents = json.loads(open("intents.json").read())
 words = pickle.load(open("words.pkl", "rb"))
 classes = pickle.load(open("classes.pkl", "rb"))
 
-
 app = Flask(__name__)
 
 
-@app.route("/", methods=["POST", "GET"])
-def home():
-    if request.method == "POST":
-        inp = request.form["msg"]
-        return inp
-    else:
-        return render_template("index.html")
+@app.route('/', methods=['POST'])
+def predict():
+    # get data
+    data = request.get_json(force=True)
+
+    data = chatbot_response(data['msg'])
+    # send back to browser
+
+    # return data
+    return jsonify(results=data)
 
 
-@app.route("/get", methods=["POST"])
-def chatbot_response():
-    msg = request.form["msg"]
-    # checks is a user has given a name, in order to give a personalized feedback
-    if msg.startswith('my name is'):
-        name = msg[11:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents)
-        res = res1.replace("{n}", name)
-    elif msg.startswith('hi my name is'):
-        name = msg[14:]
-        ints = predict_class(msg, model)
-        res1 = getResponse(ints, intents)
-        res = res1.replace("{n}", name)
-    # if no name is passed execute normally
-    else:
-        ints = predict_class(msg, model)
-        res = getResponse(ints, intents)
+def chatbot_response(msg):
+    msg = str(msg).lower()
+    ints = predict_class(msg, model)
+    res = getResponse(ints, intents)
     return res
 
 
@@ -87,14 +76,18 @@ def predict_class(sentence, model):
 
 
 def getResponse(ints, intents_json):
-    tag = ints[0]["intent"]
-    list_of_intents = intents_json["intents"]
-    for i in list_of_intents:
-        if i["tag"] == tag:
-            result = random.choice(i["responses"])
-            break
+    result = "Sorry, please try something else"
+    try:
+        tag = ints[0]["intent"]
+        list_of_intents = intents_json["intents"]
+        for i in list_of_intents:
+            if i["tag"] == tag:
+                result = random.choice(i["responses"])
+                break
+    except:
+        result = "Sorry, please try something else"
     return result
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

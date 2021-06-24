@@ -68,8 +68,8 @@
         "What is your name"
       ],
       "responses": [
-        "I am a bot",
-        "I am a chatbot"
+	"I'm just a chat agent. I am here to answer basic questions related to Vatsal",
+        "I'm a Vatsal's chat agent to assist you"
       ]
     },
     {
@@ -88,20 +88,6 @@
       ]
     },
     {
-      "tag": "name1",
-      "patterns": [
-        "what's your name?",
-        "who are you?"
-      ],
-      "responses": [
-        "I'm just a chat agent. I am here to answer basic questions related to Vatsal",
-        "I'm a Vatsal's chat agent to assist you"
-      ],
-      "context": [
-        ""
-      ]
-    },
-    {
       "tag": "name",
       "patterns": [
         "my name is ",
@@ -109,8 +95,8 @@
         "I am"
       ],
       "responses": [
-        "Oooh great to meet you {n}. How may I assist you {n}",
-        "Oh, I'll keep that in mind {n}"
+        "Oooh great to meet you. How may I assist you",
+        "Oh, I'll keep that in mind"
       ],
       "context": [
         ""
@@ -490,19 +476,7 @@
       ]
     },
     {
-      "tag": "idea",
-      "patterns": [
-        "  What is your idea"
-      ],
-      "responses": [
-        " To make chat bots very easily."
-      ],
-      "context": [
-        ""
-      ]
-    },
-    {
-      "tag": "robotss",
+      "tag": "robots",
       "patterns": [
         "  What is it like to be a robot"
       ],
