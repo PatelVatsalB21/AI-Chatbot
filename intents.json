@@ -68,8 +68,8 @@
         "What is your name"
       ],
       "responses": [
-	"I'm just a chat agent. I am here to answer basic questions related to Vatsal",
-        "I'm a Vatsal's chat agent to assist you"
+	"I'm Vatsal's assistant. I am here to assist you on behalf of Vatsal",
+        "I'm a Vatsal's assistant. How can I help you?"
       ]
     },
     {
@@ -110,7 +110,7 @@
         "age"
       ],
       "responses": [
-        "I am a 20 year old boy who loves learning new things."
+        "Vatsal is a 19 year old boy who loves learning new things."
       ],
       "context": [
         ""
@@ -124,7 +124,7 @@
         "your school"
       ],
       "responses": [
-        "I am persuing engineering from Vishwakarma Government Enginnering College."
+        "Vatsal is persuing engineering from Vishwakarma Government Enginnering College."
       ],
       "context": [
         ""
@@ -138,7 +138,7 @@
         "area of enginnering"
       ],
       "responses": [
-        "I am currently persuing Electronics and Communication engineering."
+        "Vatsal is currently persuing Electronics and Communication engineering."
       ],
       "context": [
         ""
@@ -454,7 +454,7 @@
         "  What is your favorite programming language"
       ],
       "responses": [
-        " I enjoy programming in any language but usually work with Java, Python and Assembly."
+        "Vatsal enjoys programming in any language but usually work with Java, Python and Assembly."
       ],
       "context": [
         ""
