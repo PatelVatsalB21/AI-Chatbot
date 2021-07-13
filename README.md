@@ -27,7 +27,7 @@ After successfull installation of **wordnet**, install **punkt**.
 ### Training 
 The [trainer.py](https://github.com/PatelVatsalB21/AI-Chatbot/blob/main/trainer.py) file is present in repo. To run the trainer use `python trainer.py`.
 
-Trainer is based on Keras Sequential model with Dense layers and Dropouts to avoid overfitting. The model uses softmax function for the output and SGD optimizer with learning rate `0.01`. Also Keras Callback is used to stop training if loss does not decrease with patience `5`. After training model is save in `.h5` format.
+Trainer is based on **Keras Sequential** model with **Dense layers** and **Dropouts** to avoid overfitting. The model uses **softmax** function for the output and **SGD** optimizer with learning rate `0.01`. Also Keras **Callback** is used to stop training if loss does not decrease with patience `5`. After training model is save in `.h5` format.
 
 ### Running the pretrained model
 The [app.py](https://github.com/PatelVatsalB21/AI-Chatbot/blob/main/app.py) file is present in repo. To run the model use `python app.py`.
